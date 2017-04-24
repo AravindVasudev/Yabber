@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+|       Name        |         Role         |           Github          |
+|:-----------------:|:--------------------:|:-------------------------:|
+| Aravind Vasudevan | Full Stack Developer | github.com/aravindvasudev |
+
+# TECHNOLOGY COLOPHON
+
+    * HTML5, CSS3, JS
+    * jQuery, Normalize.css, Bootstrap
+    * SCSS, Babel
+    * Typescript, Angular 2
+    * Node.js, Express, Handlebars
+    * Mongoose (MongoDB), Redis
+    * Gulp
