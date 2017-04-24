@@ -32,9 +32,4 @@ module.exports = class Routes {
     req.logout();
     res.redirect('/');
   }
-
-  // Chat App
-  getChat(req, res) {
-    res.send('You made it here. Yay!!!');
-  }
 }

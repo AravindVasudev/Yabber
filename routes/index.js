@@ -1,4 +1,5 @@
 const express          = require('express');
+const path             = require('path');
 const passport         = require('passport');
 const router           = express.Router();
 const RoutesController = require('../controllers/RoutesController');
@@ -20,6 +21,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/logout', routes.getLogout);
 
 // application
-router.get('/chat', auth.ensureAuthenticated, routes.getChat);
+router.use(auth.ensureAuthenticated);
+router.use('/chat', express.static(path.join(__dirname, '../dist')));
 
 module.exports = router;
