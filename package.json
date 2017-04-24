@@ -9,6 +9,7 @@
     "builddev": "gulp build && nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "~1.16.0",
     "bootstrap-sass": "^3.3.7",
     "connect-redis": "^3.2.0",
@@ -22,6 +23,8 @@
     "morgan": "~1.7.0",
     "normalize.css": "^6.0.0",
     "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
     "redis": "^2.7.1",
     "serve-favicon": "~2.3.2"
   },

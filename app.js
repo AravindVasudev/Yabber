@@ -8,6 +8,8 @@ const redis        = require("redis");
 const session      = require('express-session');
 const RedisStore   = require('connect-redis')(session);
 const mongoose     = require('mongoose');
+const passport     = require('passport');
+
 
 //Routes
 const index = require('./routes/index');
@@ -50,6 +52,13 @@ app.use(session({
   store: new RedisStore({client: client})
 }));
 
+//Passport Init
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Passport Config
+require('./config/passport');
+
 //Static Directories
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -68,6 +77,7 @@ app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.layout = '';
 
   // render the error page
   res.status(err.status || 500);
