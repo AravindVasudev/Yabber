@@ -1,21 +1,26 @@
-const express      = require('express');
-const path         = require('path');
-const favicon      = require('serve-favicon');
-const logger       = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser   = require('body-parser');
-const redis        = require("redis");
-const session      = require('express-session');
-const RedisStore   = require('connect-redis')(session);
-const mongoose     = require('mongoose');
-const passport     = require('passport');
-
-
-//Routes
-const index = require('./routes/index');
+const express          = require('express');
+const path             = require('path');
+const favicon          = require('serve-favicon');
+const logger           = require('morgan');
+const cookieParser     = require('cookie-parser');
+const bodyParser       = require('body-parser');
+const redis            = require("redis");
+const session          = require('express-session');
+const RedisStore       = require('connect-redis')(session);
+const mongoose         = require('mongoose');
+const passport         = require('passport');
+const socket_io        = require( "socket.io" );
+const passportSocketIo = require('passport.socketio');
 
 //Init App
 const app = express();
+
+// Socket.io
+let io = socket_io();
+app.io = io;
+
+//Routes
+const index = require('./routes/index');
 
 //Configs
 const MongoConfig = require('./config/mongodb.js');
@@ -64,6 +69,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Init Routes
 app.use('/', index);
+io.on('connection', (socket) => {
+  console.log('CONNECTED');
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
