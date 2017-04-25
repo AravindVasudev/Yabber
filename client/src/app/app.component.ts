@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'app works!';
@@ -18,10 +18,12 @@ export class AppComponent {
     let listener = Observable.fromEvent(this.socket, 'message');
     listener.subscribe((payload) => {
       console.log(payload);
+      document.getElementById('messages').innerHTML += `<li>${payload}</li>`;
     });
   }
 
   send(msg) {
     this.socket.emit('message', msg);
+    this.chatinp = '';
   }
 }

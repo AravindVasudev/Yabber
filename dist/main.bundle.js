@@ -69,10 +69,12 @@ var AppComponent = (function () {
         var listener = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].fromEvent(this.socket, 'message');
         listener.subscribe(function (payload) {
             console.log(payload);
+            document.getElementById('messages').innerHTML += "<li>" + payload + "</li>";
         });
     }
     AppComponent.prototype.send = function (msg) {
         this.socket.emit('message', msg);
+        this.chatinp = '';
     };
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
@@ -155,14 +157,14 @@ var environment = {
 /***/ 703:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font: 13px Helvetica, Arial; }\n\nform {\n  background: #000;\n  padding: 3px;\n  position: fixed;\n  bottom: 0;\n  width: 100%; }\n\nform input {\n  border: 0;\n  padding: 10px;\n  width: 90%;\n  margin-right: .5%; }\n\nform button {\n  width: 9%;\n  background: #82e0ff;\n  border: none;\n  padding: 10px; }\n\n#messages {\n  list-style-type: none;\n  margin: 0;\n  padding: 0; }\n\n#messages li {\n  padding: 5px 10px; }\n\n#messages li:nth-child(odd) {\n  background: #eee; }\n"
 
 /***/ }),
 
 /***/ 704:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>  {{title}} </h1>\n<input type=\"text\" [(ngModel)]=\"chatinp\">\n<button (click)=\"send(chatinp)\">Send</button>\n"
+module.exports = "<ul id=\"messages\"></ul>\n<form action=\"\">\n  <input id=\"m\" autocomplete=\"off\" type=\"text\" name=\"m\" [(ngModel)]=\"chatinp\" />\n  <button (click)=\"send(chatinp)\">Send</button>\n</form>\n"
 
 /***/ }),
 
