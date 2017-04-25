@@ -69,8 +69,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Init Routes
 app.use('/', index);
+
 io.on('connection', (socket) => {
   console.log('CONNECTED');
+  socket.on('message', msg => io.emit('message', msg));
 });
 
 // catch 404 and forward to error handler
