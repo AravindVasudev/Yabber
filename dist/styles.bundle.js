@@ -251,7 +251,7 @@ exports = module.exports = __webpack_require__(25)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Droid+Sans|Oswald|Titillium+Web);", ""]);
 
 // module
-exports.push([module.i, "/*\n* Variables\n*/\n/*\n* Global Styles\n*/\n::-moz-selection {\n  background: white;\n  text-shadow: none; }\n\n::selection {\n  background: #81C784;\n  color: white;\n  text-shadow: none; }\n\nhtml {\n  color: #222;\n  font-size: 1em;\n  line-height: 1.4; }\n\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: \"Droid Sans\", sans-serif;\n  overflow: hidden; }\n\n.noselect {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n\n.emoji {\n  height: 30px; }\n", ""]);
+exports.push([module.i, "/*\n* Variables\n*/\n/*\n* Global Styles\n*/\n::-moz-selection {\n  background: white;\n  text-shadow: none; }\n\n::selection {\n  background: #81C784;\n  color: white;\n  text-shadow: none; }\n\nhtml {\n  color: #222;\n  font-size: 1em;\n  line-height: 1.4; }\n\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: \"Droid Sans\", sans-serif;\n  overflow: hidden; }\n\n.noselect {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n\n.emoji {\n  height: 30px; }\n\n.visuallyhidden {\n  border: 0;\n  clip: rect(0 0 0 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n", ""]);
 
 // exports
 

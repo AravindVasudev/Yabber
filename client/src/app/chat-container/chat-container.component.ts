@@ -69,6 +69,34 @@ export class ChatContainerComponent implements OnInit {
     this.messages.push(message);
   }
 
+  sendImage(e) {
+    let fileTypes = ['jpg', 'jpeg', 'png'];
+    let file = e.target.files[0];
+    let stream = ss.createStream();
+    let ext = file.name.split('.').pop().toLowerCase();
+    if(fileTypes.indexOf(ext) > -1) {
+      // upload a file to the server.
+      ss(this.socket).emit('image', stream, {name: file.name, size: file.size});
+      ss.createBlobReadStream(file).pipe(stream);
+    }
+
+    let reader = new FileReader();
+    reader.addEventListener("load", () => this.sentImage(reader.result), false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  sentImage(img) {
+    let message: Message = {
+      image: img,
+      time: this.formatAMPM(new Date()),
+      me: true
+    };
+    this.messages.push(message);
+  }
+
   private formatAMPM(date) {
     var hours = date.getHours();
     var minutes = date.getMinutes();
@@ -85,7 +113,6 @@ export class ChatContainerComponent implements OnInit {
     this.contextMenu.style.left = `${ev.pageX}px`;
     this.contextMenu.style.top = `${ev.pageY}px`;
     this.contextMenu.style.display = 'block';
-    console.log(ev.pageX + " " + ev.pageY);
     return false;
   }
 

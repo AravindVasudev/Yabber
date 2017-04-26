@@ -5,7 +5,7 @@
       <span class="image" *ngIf="message.image">
         <img src="{{message.image}}" class="img-responsive">
       </span>
-      <span class="msg" [innerHTML]="message.msg"></span>
+      <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
       <span class="time noselect">{{message.time}}</span>
     </div>
     <ng-template #elseBlock>
@@ -14,7 +14,7 @@
       <span class="image" *ngIf="message.image">
         <img src="{{message.image}}" class="img-responsive">
       </span>
-      <span class="msg" [innerHTML]="message.msg"></span>
+      <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
       <span class="time noselect">{{message.time}}</span>
     </div>
     </ng-template>

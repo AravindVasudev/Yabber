@@ -40,6 +40,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat_container_chat_container_component__ = __webpack_require__(193);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -47,12 +48,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = (function () {
     function AppComponent() {
     }
     return AppComponent;
 }());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1__chat_container_chat_container_component__["a" /* ChatContainerComponent */]),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__chat_container_chat_container_component__["a" /* ChatContainerComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__chat_container_chat_container_component__["a" /* ChatContainerComponent */]) === "function" && _a || Object)
+], AppComponent.prototype, "chatComponent", void 0);
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
         selector: 'app-root',
@@ -61,6 +70,7 @@ AppComponent = __decorate([
     })
 ], AppComponent);
 
+var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -236,6 +246,31 @@ var ChatContainerComponent = (function () {
         };
         this.messages.push(message);
     };
+    ChatContainerComponent.prototype.sendImage = function (e) {
+        var _this = this;
+        var fileTypes = ['jpg', 'jpeg', 'png'];
+        var file = e.target.files[0];
+        var stream = ss.createStream();
+        var ext = file.name.split('.').pop().toLowerCase();
+        if (fileTypes.indexOf(ext) > -1) {
+            // upload a file to the server.
+            ss(this.socket).emit('image', stream, { name: file.name, size: file.size });
+            ss.createBlobReadStream(file).pipe(stream);
+        }
+        var reader = new FileReader();
+        reader.addEventListener("load", function () { return _this.sentImage(reader.result); }, false);
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
+    ChatContainerComponent.prototype.sentImage = function (img) {
+        var message = {
+            image: img,
+            time: this.formatAMPM(new Date()),
+            me: true
+        };
+        this.messages.push(message);
+    };
     ChatContainerComponent.prototype.formatAMPM = function (date) {
         var hours = date.getHours();
         var minutes = date.getMinutes();
@@ -251,7 +286,6 @@ var ChatContainerComponent = (function () {
         this.contextMenu.style.left = ev.pageX + "px";
         this.contextMenu.style.top = ev.pageY + "px";
         this.contextMenu.style.display = 'block';
-        console.log(ev.pageX + " " + ev.pageY);
         return false;
     };
     ChatContainerComponent.prototype.contextmenuhide = function (ev) {
@@ -298,7 +332,7 @@ exports = module.exports = __webpack_require__(25)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Droid+Sans|Oswald|Titillium+Web);", ""]);
 
 // module
-exports.push([module.i, "/*\n* Variables\n*/\n.row.no-gutter {\n  margin-left: 0;\n  margin-right: 0; }\n\n.row.no-gutter [class*='col-']:not(:first-child),\n.row.no-gutter [class*='col-']:not(:last-child) {\n  padding-right: 0;\n  padding-left: 0; }\n\n#app-container {\n  margin: 0;\n  padding: 0;\n  height: 90vh;\n  width: 80vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: white; }\n\n#app-container-content {\n  height: 100%;\n  width: 100%; }\n\n#chat-column {\n  height: 100% !important; }\n\n#chat-container {\n  height: 100% !important; }\n\n#context-menu {\n  border-radius: 0;\n  position: absolute;\n  display: none;\n  border: 0;\n  list-style-type: none;\n  width: 200px;\n  background-color: white;\n  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }\n  #context-menu label {\n    display: inline-block;\n    width: 100%;\n    font-weight: normal;\n    cursor: pointer; }\n  #context-menu * {\n    text-decoration: none;\n    color: #454545; }\n  #context-menu *:hover {\n    background-color: #03A9F4;\n    color: white !important;\n    cursor: pointer; }\n    #context-menu *:hover a {\n      color: white !important; }\n", ""]);
+exports.push([module.i, "/*\n* Variables\n*/\n.row.no-gutter {\n  margin-left: 0;\n  margin-right: 0; }\n\n.row.no-gutter [class*='col-']:not(:first-child),\n.row.no-gutter [class*='col-']:not(:last-child) {\n  padding-right: 0;\n  padding-left: 0; }\n\n#app-container {\n  margin: 0;\n  padding: 0;\n  height: 90vh;\n  width: 80vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: white; }\n\n#app-container-content {\n  height: 100%;\n  width: 100%; }\n\n#chat-column {\n  height: 100% !important; }\n\n#chat-container {\n  height: 100% !important; }\n\n#context-menu {\n  border-radius: 0;\n  position: absolute;\n  display: none;\n  border: 0;\n  list-style-type: none;\n  width: 200px;\n  background-color: white;\n  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }\n  #context-menu label {\n    display: inline-block;\n    width: 100%;\n    font-weight: normal;\n    cursor: pointer; }\n  #context-menu * {\n    text-decoration: none;\n    color: #454545; }\n  #context-menu *:hover {\n    background-color: #03A9F4;\n    color: white !important;\n    cursor: pointer; }\n    #context-menu *:hover a, #context-menu *:hover label {\n      color: white !important; }\n", ""]);
 
 // exports
 
@@ -347,7 +381,7 @@ module.exports = module.exports.toString();
 /***/ 277:
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <ul id=\"messages\"></ul>\n<form action=\"\">\n  <input id=\"m\" autocomplete=\"off\" type=\"text\" name=\"m\" [(ngModel)]=\"chatinp\" />\n  <button (click)=\"send(chatinp)\">Send</button>\n</form> -->\n\n<md-card id=\"app-container\">\n    <div class=\"row no-gutter\" id=\"app-container-content\">\n      <div class=\"col-md-3\" id=\"chat-column\">\n        <chat-column></chat-column>\n      </div>\n      <div class=\"col-md-9\" id=\"chat-container\">\n        <chat-container></chat-container>\n      </div>\n    </div>\n</md-card>\n\n<md-list id=\"context-menu\">\n  <md-list-item>Item 1</md-list-item>\n  <md-list-item>Item 2</md-list-item>\n  <md-list-item><a href=\"/logout\">Logout</a></md-list-item>\n</md-list>\n"
+module.exports = "<!-- <ul id=\"messages\"></ul>\n<form action=\"\">\n  <input id=\"m\" autocomplete=\"off\" type=\"text\" name=\"m\" [(ngModel)]=\"chatinp\" />\n  <button (click)=\"send(chatinp)\">Send</button>\n</form> -->\n\n<md-card id=\"app-container\">\n    <div class=\"row no-gutter\" id=\"app-container-content\">\n      <div class=\"col-md-3\" id=\"chat-column\">\n        <chat-column></chat-column>\n      </div>\n      <div class=\"col-md-9\" id=\"chat-container\">\n        <chat-container></chat-container>\n      </div>\n    </div>\n</md-card>\n\n<md-list id=\"context-menu\">\n  <md-list-item>\n    <input type=\"file\" name=\"file\" id=\"file\" (change)=\"chatComponent.sendImage($event)\" class=\"visuallyhidden\" accept=\"image/*\">\n    <label for=\"file\">UPLOAD PIC</label>\n  </md-list-item>\n  <md-list-item>ITEM</md-list-item>\n  <md-list-item><a href=\"/logout\">LOGOUT</a></md-list-item>\n</md-list>\n"
 
 /***/ }),
 
@@ -361,7 +395,7 @@ module.exports = "<div id=\"chat-column-header\"></div>\n"
 /***/ 279:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"chat-container-header\"></div>\n<div id=\"chat-body\" (contextmenu)=\"contextmenushow($event)\" (click)=\"contextmenuhide($event)\">\n  <div id=\"messages\" *ngFor=\"let message of messages\">\n    <div class=\"message-me\" *ngIf=\"message.me; else elseBlock\">\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    <ng-template #elseBlock>\n    <div class=\"message\">\n      <span class=\"username noselect\">{{message.name}}</span>\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    </ng-template>\n  </div>\n</div>\n<div id=\"chat-sender\" class=\"noselect\">\n  <form>\n    <input type=\"text\" name=\"msg\" autocomplete=\"off\" placeholder=\"Type a message\" id=\"type-message\" [(ngModel)]=\"chatmsg\">\n    <button type=\"submit\" id=\"send-button\" (click)=\"send(chatmsg)\"><span class=\"glyphicon glyphicon-chevron-right\"></span></button>\n  </form>\n</div>\n"
+module.exports = "<div id=\"chat-container-header\"></div>\n<div id=\"chat-body\" (contextmenu)=\"contextmenushow($event)\" (click)=\"contextmenuhide($event)\">\n  <div id=\"messages\" *ngFor=\"let message of messages\">\n    <div class=\"message-me\" *ngIf=\"message.me; else elseBlock\">\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" *ngIf=\"message.msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    <ng-template #elseBlock>\n    <div class=\"message\">\n      <span class=\"username noselect\">{{message.name}}</span>\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" *ngIf=\"message.msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    </ng-template>\n  </div>\n</div>\n<div id=\"chat-sender\" class=\"noselect\">\n  <form>\n    <input type=\"text\" name=\"msg\" autocomplete=\"off\" placeholder=\"Type a message\" id=\"type-message\" [(ngModel)]=\"chatmsg\">\n    <button type=\"submit\" id=\"send-button\" (click)=\"send(chatmsg)\"><span class=\"glyphicon glyphicon-chevron-right\"></span></button>\n  </form>\n</div>\n"
 
 /***/ }),
 
