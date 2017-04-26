@@ -28,3 +28,8 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+
+# Angular 2 distribution
+#Can be generated again using `	ng build --base-href chat -w	`
+dist/*
+
