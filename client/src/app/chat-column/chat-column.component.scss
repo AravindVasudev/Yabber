@@ -1,0 +1,12 @@
+@import '../../variables';
+
+// Chat Container Header
+#chat-column-header {
+  //Size
+  height: 10%;
+  width: 100%;
+
+  //Design
+  background: $highlight;
+  border-right: 1px solid #E0E0E0;
+}

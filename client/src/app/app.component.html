@@ -1,5 +1,22 @@
-<ul id="messages"></ul>
+<!-- <ul id="messages"></ul>
 <form action="">
   <input id="m" autocomplete="off" type="text" name="m" [(ngModel)]="chatinp" />
   <button (click)="send(chatinp)">Send</button>
-</form>
+</form> -->
+
+<md-card id="app-container">
+    <div class="row no-gutter" id="app-container-content">
+      <div class="col-md-3" id="chat-column">
+        <chat-column></chat-column>
+      </div>
+      <div class="col-md-9" id="chat-container">
+        <chat-container></chat-container>
+      </div>
+    </div>
+</md-card>
+
+<md-list id="context-menu">
+  <md-list-item>Item 1</md-list-item>
+  <md-list-item>Item 2</md-list-item>
+  <md-list-item><a href="/logout">Logout</a></md-list-item>
+</md-list>

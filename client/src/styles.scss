@@ -1,0 +1,46 @@
+@import 'variables';
+
+/*
+* Global Styles
+*/
+
+// Selection
+::-moz-selection {
+    background: $default-selection-color;
+    text-shadow: none;
+}
+
+::selection {
+    background: $default-selection-bg;
+    color: $default-selection-color;
+    text-shadow: none;
+}
+
+// HTML
+html {
+  color: $default-color;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
+}
+
+// Body
+body {
+  // Global Resets
+  margin: 0;
+  padding: 0;
+
+  // Design
+  // background-color: red;
+  font-family: $droid-sans;
+  overflow: hidden;
+}
+
+// Disable Selection
+.noselect {
+  user-select: none;
+}
+
+// Twemoji height
+.emoji {
+  height: 30px;
+}

@@ -1,0 +1,28 @@
+<div id="chat-container-header"></div>
+<div id="chat-body" (contextmenu)="contextmenushow($event)" (click)="contextmenuhide($event)">
+  <div id="messages" *ngFor="let message of messages">
+    <div class="message-me" *ngIf="message.me; else elseBlock">
+      <span class="image" *ngIf="message.image">
+        <img src="{{message.image}}" class="img-responsive">
+      </span>
+      <span class="msg" [innerHTML]="message.msg"></span>
+      <span class="time noselect">{{message.time}}</span>
+    </div>
+    <ng-template #elseBlock>
+    <div class="message">
+      <span class="username noselect">{{message.name}}</span>
+      <span class="image" *ngIf="message.image">
+        <img src="{{message.image}}" class="img-responsive">
+      </span>
+      <span class="msg" [innerHTML]="message.msg"></span>
+      <span class="time noselect">{{message.time}}</span>
+    </div>
+    </ng-template>
+  </div>
+</div>
+<div id="chat-sender" class="noselect">
+  <form>
+    <input type="text" name="msg" autocomplete="off" placeholder="Type a message" id="type-message" [(ngModel)]="chatmsg">
+    <button type="submit" id="send-button" (click)="send(chatmsg)"><span class="glyphicon glyphicon-chevron-right"></span></button>
+  </form>
+</div>

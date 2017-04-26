@@ -36,6 +36,9 @@ client.on('connect', function() {
   console.log('Connected to Redis');
 });
 
+//Session Store
+const sessionStore = new RedisStore({client: client});
+
 // View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -54,7 +57,7 @@ app.use(session({
   secret: 'shamballa',
   saveUninitialized: true,
   resave: true,
-  store: new RedisStore({client: client})
+  store: sessionStore
 }));
 
 //Passport Init
@@ -64,16 +67,23 @@ app.use(passport.session());
 //Passport Config
 require('./config/passport');
 
+//Passport Socket.io Middleware
+io.use(passportSocketIo.authorize({
+  key: 'connect.sid',
+  secret: 'shamballa',
+  store: sessionStore,
+  passport: passport,
+  cookieParser: cookieParser
+}));
+
 //Static Directories
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Init Routes
 app.use('/', index);
 
-io.on('connection', (socket) => {
-  console.log('CONNECTED');
-  socket.on('message', msg => io.emit('message', msg));
-});
+// Socket Connections
+require('./controllers/SocketConnections')(io);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

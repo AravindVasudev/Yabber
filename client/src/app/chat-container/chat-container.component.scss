@@ -1,0 +1,177 @@
+@import '../../variables';
+
+// Chat Container Header
+#chat-container-header {
+  //Size
+  height: 10%;
+  width: 100%;
+
+  //Design
+  background: $highlight;
+}
+
+// Chat Body
+#chat-body {
+  //Size
+  height: 80%;
+  width: 100%;
+  padding: 20px 60px;
+  overflow-y: scroll;
+
+  //Design
+  background: url('../../assets/images/bg.png');
+}
+
+// Messages
+#messages {
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  overflow: none;
+}
+
+
+// Chat Sender
+#chat-sender {
+  //Size
+  height: 10%;
+  width: 100%;
+
+  //Design
+  background-color: #f5f1ee;
+
+  form {
+    //Size
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+
+    // Center
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#type-message {
+  border: 0;
+  width: 90%;
+  height: 3.5em;
+  border-radius: 5px;
+  padding-left: 15px;
+  word-wrap: break-word;
+  flex: 8;
+}
+
+#send-button {
+  border: 0;
+  background-color: transparent;
+  color: $primaryDark;
+  font-size: 1.6em;
+  flex: 1;
+}
+
+#type-message:focus, #send-button:focus {
+  outline: 0;
+}
+
+// Message
+.message {
+  display: inline-block;
+  padding: 5px 15px;
+  background-color: white;
+  border-radius: 10px;
+  min-width: 10em;
+  max-width: 50%;
+
+  flex: 1;
+  align-self: flex-start;
+
+  margin: 1px 0;
+  .username {
+    font-size: 0.8em;
+    display: block;
+  }
+
+  .msg {
+    word-wrap: break-word;
+    display: block;
+  }
+}
+
+// Message sent my me
+.message-me {
+  display: inline-block;
+  padding: 5px 15px;
+  background-color: #dcf8c6;
+  border-radius: 10px;
+  min-width: 10em;
+  max-width: 50%;
+  position: relative;
+
+  flex: 1;
+  align-self: flex-end;
+
+  margin: 2px 0;
+
+  .msg {
+    word-wrap: break-word;
+    display: block;
+  }
+}
+
+.message-bot {
+  display: inline-block;
+  flex: 1;
+  align-self: center;
+}
+
+.time {
+  font-size: 0.6em;
+  color: #BDBDBD;
+}
+
+// Cursor for image enlargement
+.image > img { cursor:zoom-in; }
+.image > img:-webkit-full-screen { cursor:zoom-out; }
+.image > img:-moz-full-screen { cursor:zoom-out; }
+.image > img:-ms-fullscreen { cursor:zoom-out; }
+.image > img:fullscreen { cursor:zoom-out; }
+
+// Media Queries for small display
+@media only screen and (max-width: 768px) {
+  body {
+    background-color: #f5f1ee;
+  }
+
+  .app-container {
+    //size
+    height: 100vh;
+    width: 100vw;
+  }
+
+  //Send Button
+  .send-button {
+    border-radius: 50%;
+    background-color: $highlightBackground;
+  }
+
+  #messages {
+    padding: 10px !important;
+  }
+
+  #sender, #type-message {
+    padding: .5em !important;
+    height: 2em;
+  }
+
+  #sender {
+    padding-bottom: 5px !important;
+  }
+
+  .message, .message-me {
+    max-width: 90%;
+  }
+}
