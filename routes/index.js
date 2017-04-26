@@ -12,6 +12,10 @@ const Group = require('../models/group');
 // login page
 router.get('/', auth.AuthenticatedRedirect, routes.getIndex);
 
+// signup page
+router.get('/signup', auth.AuthenticatedRedirect, routes.getSignup);
+router.post('/signup', auth.AuthenticatedRedirect, routes.postSignup);
+
 // verify login
 router.post('/login', passport.authenticate('local', {
   successRedirect:'/chat',

@@ -23,6 +23,7 @@
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "^5.0.0",
     "jquery": "^3.2.1",
+    "materialize-css": "^0.98.2",
     "mime": "^1.3.4",
     "mongoose": "^4.9.6",
     "morgan": "~1.7.0",
@@ -57,7 +58,8 @@
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",
-    "bootstrap": "/media/aravindvasudev/Vault/Code/yabber/Code/Yabber/node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"
+    "bootstrap": "/media/aravindvasudev/Vault/Code/yabber/Code/Yabber/node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+    "materialize": "./node_modules/materialize-css/bin/materialize.js"
   },
   "browserify": {
     "transform": [

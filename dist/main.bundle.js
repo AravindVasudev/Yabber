@@ -1,6 +1,6 @@
 webpackJsonp([2,5],{
 
-/***/ 179:
+/***/ 180:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -9,20 +9,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 179;
+webpackEmptyContext.id = 180;
 
 
 /***/ }),
 
-/***/ 180:
+/***/ 181:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(199);
 
 
 
@@ -35,7 +35,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 195:
+/***/ 196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65,8 +65,8 @@ __decorate([
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(284),
-        styles: [__webpack_require__(271)]
+        template: __webpack_require__(285),
+        styles: [__webpack_require__(272)]
     })
 ], AppComponent);
 
@@ -75,7 +75,7 @@ var _a;
 
 /***/ }),
 
-/***/ 196:
+/***/ 197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83,12 +83,12 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hammerjs__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hammerjs__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hammerjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_column_chat_column_component__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_column_chat_column_component__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__chat_container_chat_container_component__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular2_notifications__ = __webpack_require__(100);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
@@ -138,11 +138,13 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 197:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatColumnComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -154,18 +156,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ChatColumnComponent = (function () {
     function ChatColumnComponent() {
+        // this.socket = io();
+        //
+        // // Get Details
+        // Observable.fromEvent(this.socket, 'details')
+        //   .subscribe(msg => this.reply(msg))
     }
-    ChatColumnComponent.prototype.ngOnInit = function () {
-    };
+    ChatColumnComponent.prototype.ngOnInit = function () { };
     return ChatColumnComponent;
 }());
 ChatColumnComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
         selector: 'chat-column',
-        template: __webpack_require__(285),
-        styles: [__webpack_require__(272)]
+        template: __webpack_require__(286),
+        styles: [__webpack_require__(273)]
     }),
     __metadata("design:paramtypes", [])
 ], ChatColumnComponent);
@@ -174,7 +181,7 @@ ChatColumnComponent = __decorate([
 
 /***/ }),
 
-/***/ 198:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -191,7 +198,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 271:
+/***/ 272:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(19)(false);
@@ -209,24 +216,6 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 272:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(19)(false);
-// imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Droid+Sans|Oswald|Titillium+Web);", ""]);
-
-// module
-exports.push([module.i, "/*\n* Variables\n*/\n#chat-column-header {\n  height: 10%;\n  width: 100%;\n  background: #03A9F4;\n  border-right: 1px solid #E0E0E0; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
 /***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -235,7 +224,7 @@ exports = module.exports = __webpack_require__(19)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Droid+Sans|Oswald|Titillium+Web);", ""]);
 
 // module
-exports.push([module.i, "/*\n* Variables\n*/\n#chat-container-header {\n  height: 10%;\n  width: 100%;\n  background: #03A9F4; }\n\n#chat-body {\n  height: 80%;\n  width: 100%;\n  padding: 20px 60px;\n  overflow-y: scroll;\n  background: url(" + __webpack_require__(555) + "); }\n\n#messages {\n  margin: 0;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column nowrap;\n          flex-flow: column nowrap;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  overflow: none; }\n\n#chat-sender {\n  height: 10%;\n  width: 100%;\n  background-color: #f5f1ee; }\n  #chat-sender form {\n    height: 100%;\n    width: 100%;\n    padding: 10px;\n    text-align: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  #chat-sender md-progress-bar {\n    position: relative;\n    top: -5px; }\n\n#type-message {\n  border: 0;\n  width: 90%;\n  height: 3.5em;\n  border-radius: 5px;\n  padding-left: 15px;\n  word-wrap: break-word;\n  -webkit-box-flex: 8;\n      -ms-flex: 8;\n          flex: 8; }\n\n#send-button, #emoji-tray-button {\n  border: 0;\n  background-color: transparent;\n  color: #313638;\n  font-size: 1.6em;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\n#emoji-tray-button {\n  -webkit-box-flex: 0.5;\n      -ms-flex: 0.5;\n          flex: 0.5; }\n\n#type-message:focus, #send-button:focus, #emoji-tray-button:focus {\n  outline: 0; }\n\n.message {\n  display: inline-block;\n  padding: 5px 15px;\n  background-color: white;\n  border-radius: 10px;\n  min-width: 10em;\n  max-width: 50%;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -ms-flex-item-align: start;\n      align-self: flex-start;\n  margin: 1px 0; }\n  .message .username {\n    font-size: 0.8em;\n    display: block; }\n  .message .msg {\n    word-wrap: break-word;\n    display: block; }\n\n.message-me {\n  display: inline-block;\n  padding: 5px 15px;\n  background-color: #dcf8c6;\n  border-radius: 10px;\n  min-width: 10em;\n  max-width: 50%;\n  position: relative;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -ms-flex-item-align: end;\n      align-self: flex-end;\n  margin: 2px 0; }\n  .message-me .msg {\n    word-wrap: break-word;\n    display: block; }\n\n.message-bot {\n  display: inline-block;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.time {\n  font-size: 0.6em;\n  color: #BDBDBD; }\n\n.image > img {\n  cursor: zoom-in; }\n\n.image > img:-webkit-full-screen {\n  cursor: zoom-out; }\n\n.image > img:-moz-full-screen {\n  cursor: zoom-out; }\n\n.image > img:-ms-fullscreen {\n  cursor: zoom-out; }\n\n.image > img:fullscreen {\n  cursor: zoom-out; }\n\n@media only screen and (max-width: 768px) {\n  body {\n    background-color: #f5f1ee; }\n  .app-container {\n    height: 100vh;\n    width: 100vw; }\n  .send-button {\n    border-radius: 50%;\n    background-color: #EDF0DA; }\n  #messages {\n    padding: 10px !important; }\n  #sender, #type-message {\n    padding: .5em !important;\n    height: 2em; }\n  #sender {\n    padding-bottom: 5px !important; }\n  .message, .message-me {\n    max-width: 90%; } }\n\n#emoji-tray {\n  position: absolute;\n  width: 100%;\n  height: 40%;\n  top: 50%;\n  display: none;\n  background: #F5F5F5;\n  overflow-y: scroll;\n  padding-top: 10px; }\n\n#emoji-tray-content {\n  width: 90%;\n  margin: auto; }\n  #emoji-tray-content h4 {\n    padding-left: 2.5px; }\n  #emoji-tray-content .col-sm-1 {\n    cursor: pointer; }\n", ""]);
+exports.push([module.i, "/*\n* Variables\n*/\n#chat-column-header {\n  height: 10%;\n  width: 100%;\n  background: #03A9F4;\n  border-right: 1px solid #FFFFFF;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n  #chat-column-header .row {\n    height: 100%;\n    width: 100%; }\n  #chat-column-header .col-sm-2, #chat-column-header .col-sm-4, #chat-column-header .col-sm-6 {\n    height: 100%; }\n\n#dp {\n  margin-top: 5%; }\n\n#display-name, #add-group {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%); }\n\n#display-name {\n  font-size: 1.2em; }\n\n#chat-column-body {\n  height: 90%;\n  background: #FAFAFA; }\n", ""]);
 
 // exports
 
@@ -245,24 +234,42 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 284:
-/***/ (function(module, exports) {
+/***/ 274:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<!-- <ul id=\"messages\"></ul>\n<form action=\"\">\n  <input id=\"m\" autocomplete=\"off\" type=\"text\" name=\"m\" [(ngModel)]=\"chatinp\" />\n  <button (click)=\"send(chatinp)\">Send</button>\n</form> -->\n\n<md-card id=\"app-container\">\n    <div class=\"row no-gutter\" id=\"app-container-content\">\n      <div class=\"col-md-3\" id=\"chat-column\">\n        <chat-column></chat-column>\n      </div>\n      <div class=\"col-md-9\" id=\"chat-container\">\n        <chat-container></chat-container>\n      </div>\n    </div>\n</md-card>\n\n<md-list id=\"context-menu\">\n  <md-list-item>\n    <input type=\"file\" name=\"file\" id=\"file\" (change)=\"chatComponent.sendImage($event)\" class=\"visuallyhidden\" accept=\"image/*\">\n    <label for=\"file\">UPLOAD PIC</label>\n  </md-list-item>\n  <md-list-item>ITEM</md-list-item>\n  <md-list-item><a href=\"/logout\">LOGOUT</a></md-list-item>\n</md-list>\n"
+exports = module.exports = __webpack_require__(19)(false);
+// imports
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Droid+Sans|Oswald|Titillium+Web);", ""]);
+
+// module
+exports.push([module.i, "/*\n* Variables\n*/\n#chat-container-header {\n  height: 10%;\n  width: 100%;\n  background: #03A9F4;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\n#chat-container-header-content h3 {\n  margin-left: 50px; }\n\n#chat-body {\n  height: 80%;\n  width: 100%;\n  padding: 20px 60px;\n  overflow-y: scroll;\n  background: url(" + __webpack_require__(555) + "); }\n\n#messages {\n  margin: 0;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column nowrap;\n          flex-flow: column nowrap;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  overflow: none; }\n\n#chat-sender {\n  height: 10%;\n  width: 100%;\n  background-color: #f5f1ee; }\n  #chat-sender form {\n    height: 100%;\n    width: 100%;\n    padding: 10px;\n    text-align: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n  #chat-sender md-progress-bar {\n    position: relative;\n    top: -5px; }\n\n#type-message {\n  border: 0;\n  width: 90%;\n  height: 3.5em;\n  border-radius: 5px;\n  padding-left: 15px;\n  word-wrap: break-word;\n  -webkit-box-flex: 8;\n      -ms-flex: 8;\n          flex: 8; }\n\n#send-button, #emoji-tray-button {\n  border: 0;\n  background-color: transparent;\n  color: #313638;\n  font-size: 1.6em;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\n#emoji-tray-button {\n  -webkit-box-flex: 0.5;\n      -ms-flex: 0.5;\n          flex: 0.5; }\n\n#type-message:focus, #send-button:focus, #emoji-tray-button:focus {\n  outline: 0; }\n\n.message {\n  display: inline-block;\n  padding: 5px 15px;\n  background-color: white;\n  border-radius: 10px;\n  min-width: 10em;\n  max-width: 50%;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -ms-flex-item-align: start;\n      align-self: flex-start;\n  margin: 1px 0; }\n  .message .username {\n    font-size: 0.8em;\n    display: block; }\n  .message .msg {\n    word-wrap: break-word;\n    display: block; }\n\n.message-me {\n  display: inline-block;\n  padding: 5px 15px;\n  background-color: #dcf8c6;\n  border-radius: 10px;\n  min-width: 10em;\n  max-width: 50%;\n  position: relative;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -ms-flex-item-align: end;\n      align-self: flex-end;\n  margin: 2px 0; }\n  .message-me .msg {\n    word-wrap: break-word;\n    display: block; }\n\n.message-bot {\n  display: inline-block;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.time {\n  font-size: 0.6em;\n  color: #BDBDBD; }\n\n.image > img {\n  cursor: zoom-in; }\n\n.image > img:-webkit-full-screen {\n  cursor: zoom-out; }\n\n.image > img:-moz-full-screen {\n  cursor: zoom-out; }\n\n.image > img:-ms-fullscreen {\n  cursor: zoom-out; }\n\n.image > img:fullscreen {\n  cursor: zoom-out; }\n\n#emoji-tray {\n  position: absolute;\n  width: 100%;\n  height: 40%;\n  top: 50%;\n  display: none;\n  background: #F5F5F5;\n  overflow-y: scroll;\n  padding-top: 10px; }\n\n#emoji-tray-content {\n  width: 90%;\n  margin: auto; }\n  #emoji-tray-content h4 {\n    padding-left: 2.5px; }\n  #emoji-tray-content .col-sm-1 {\n    cursor: pointer; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
 /***/ 285:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"chat-column-header\"></div>\n"
+module.exports = "<!-- <ul id=\"messages\"></ul>\n<form action=\"\">\n  <input id=\"m\" autocomplete=\"off\" type=\"text\" name=\"m\" [(ngModel)]=\"chatinp\" />\n  <button (click)=\"send(chatinp)\">Send</button>\n</form> -->\n\n<md-card id=\"app-container\">\n    <div class=\"row no-gutter\" id=\"app-container-content\">\n      <div class=\"col-md-3\" id=\"chat-column\">\n        <chat-column></chat-column>\n      </div>\n      <div class=\"col-md-9\" id=\"chat-container\">\n        <chat-container></chat-container>\n      </div>\n    </div>\n</md-card>\n\n<md-list id=\"context-menu\">\n  <md-list-item>\n    <input type=\"file\" name=\"file\" id=\"file\" (change)=\"chatComponent.sendImage($event)\" class=\"visuallyhidden\" accept=\"image/*\">\n    <label for=\"file\">UPLOAD PIC</label>\n  </md-list-item>\n  <md-list-item>ITEM</md-list-item>\n  <md-list-item><a href=\"/logout\">LOGOUT</a></md-list-item>\n</md-list>\n"
 
 /***/ }),
 
 /***/ 286:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"chat-container-header\"></div>\n<div id=\"chat-body\" (contextmenu)=\"contextmenushow($event)\" (click)=\"contextmenuhide($event)\">\n  <div id=\"messages\" *ngFor=\"let message of messages\">\n    <div class=\"message-me\" *ngIf=\"message.me; else elseBlock\">\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" *ngIf=\"message.msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    <ng-template #elseBlock>\n    <div class=\"message\">\n      <span class=\"username noselect\">{{message.name}}</span>\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" *ngIf=\"message.msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    </ng-template>\n  </div>\n</div>\n<div id=\"emoji-tray\">\n  <div id=\"emoji-tray-content\">\n    <h4>Emojis</h4>\n    <div class=\"row\">\n      <div class=\"col-sm-1\" *ngFor=\"let emoji of emojiSet\" [innerHTML]=\"parseEmoji(emoji)\" (click)=\"insertEmoji(emoji)\"></div>\n    </div>\n  </div>\n</div>\n<div id=\"chat-sender\" class=\"noselect\">\n  <form>\n    <button type=\"button\" id=\"emoji-tray-button\" (click)=\"toggleEmojiTray()\"><span class=\"glyphicon glyphicon-sunglasses\"></span></button>\n    <input type=\"text\" name=\"msg\" autocomplete=\"off\" placeholder=\"Type a message\" id=\"type-message\" [(ngModel)]=\"chatmsg\">\n    <button type=\"submit\" id=\"send-button\" (click)=\"send(chatmsg)\"><span class=\"glyphicon glyphicon-chevron-right\"></span></button>\n  </form>\n  <md-progress-bar [mode]=\"progressStatus\" [value]=\"progressSize\"></md-progress-bar>\n</div>\n"
+module.exports = "<div id=\"chat-column-header\">\n  <div class=\"row\">\n    <div class=\"col-sm-4\">\n      <img src=\"assets/images/avatar.png\" class=\"img-circle\"  height=\"90%\" alt=\"display picture\" id=\"dp\">\n    </div>\n    <div class=\"col-sm-6\">\n      <div id=\"display-name\">Aravind Vasudevan</div>\n    </div>\n    <div class=\"col-sm-2\">\n      <div id=\"add-group\"><span class=\"glyphicon glyphicon-plus\"></span></div>\n    </div>\n  </div>\n</div>\n\n<div id=\"chat-column-body\"></div>\n"
+
+/***/ }),
+
+/***/ 287:
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"chat-container-header\">\n  <div id=\"chat-container-header-content\">\n    <div class=\"row\">\n      <div class=\"col-sm-10\">\n        <h3>Yabber! - Local IM</h3>\n      </div>\n      <div class=\"col-sm-2\"></div>\n    </div>\n  </div>\n</div>\n<div id=\"chat-body\" (contextmenu)=\"contextmenushow($event)\" (click)=\"contextmenuhide($event)\">\n  <div id=\"messages\" *ngFor=\"let message of messages\">\n    <div class=\"message-me\" *ngIf=\"message.me; else elseBlock\">\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" *ngIf=\"message.msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    <ng-template #elseBlock>\n    <div class=\"message\">\n      <span class=\"username noselect\">{{message.name}}</span>\n      <span class=\"image\" *ngIf=\"message.image\">\n        <img src=\"{{message.image}}\" class=\"img-responsive\">\n      </span>\n      <span class=\"msg\" *ngIf=\"message.msg\" [innerHTML]=\"message.msg\"></span>\n      <span class=\"time noselect\">{{message.time}}</span>\n    </div>\n    </ng-template>\n  </div>\n</div>\n<div id=\"emoji-tray\">\n  <div id=\"emoji-tray-content\">\n    <h4>Emojis</h4>\n    <div class=\"row\">\n      <div class=\"col-sm-1\" *ngFor=\"let emoji of emojiSet\" [innerHTML]=\"parseEmoji(emoji)\" (click)=\"insertEmoji(emoji)\"></div>\n    </div>\n  </div>\n</div>\n<div id=\"chat-sender\" class=\"noselect\">\n  <form>\n    <button type=\"button\" id=\"emoji-tray-button\" (click)=\"toggleEmojiTray()\"><span class=\"glyphicon glyphicon-sunglasses\"></span></button>\n    <input type=\"text\" name=\"msg\" autocomplete=\"off\" placeholder=\"Type a message\" id=\"type-message\" [(ngModel)]=\"chatmsg\">\n    <button type=\"submit\" id=\"send-button\" (click)=\"send(chatmsg)\"><span class=\"glyphicon glyphicon-chevron-right\"></span></button>\n  </form>\n  <md-progress-bar [mode]=\"progressStatus\" [value]=\"progressSize\"></md-progress-bar>\n</div>\n"
 
 /***/ }),
 
@@ -283,7 +290,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAREAAAEfCAAAAABD
 /***/ 560:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(180);
+module.exports = __webpack_require__(181);
 
 
 /***/ }),
@@ -297,7 +304,7 @@ module.exports = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_socket_io_client__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_notifications__ = __webpack_require__(100);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatContainerComponent; });
@@ -318,7 +325,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ChatContainerComponent = (function () {
     function ChatContainerComponent(pushService) {
         this.pushService = pushService;
-        this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__["connect"]('http://localhost:3000');
+        this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__();
         this.messages = [];
         this.audio = new Audio('assets/media/chat.mp3');
         this.progressStatus = 'indeterminate';
@@ -439,8 +446,8 @@ var ChatContainerComponent = (function () {
 ChatContainerComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Component */])({
         selector: 'chat-container',
-        template: __webpack_require__(286),
-        styles: [__webpack_require__(273)]
+        template: __webpack_require__(287),
+        styles: [__webpack_require__(274)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_notifications__["b" /* PushNotificationsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_notifications__["b" /* PushNotificationsService */]) === "function" && _a || Object])
 ], ChatContainerComponent);

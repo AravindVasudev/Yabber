@@ -1,0 +1,28 @@
+<div id="app-container">
+  <div class="card-panel white" id="app">
+    <div id="app-content">
+      <h1 class="center noselect">Signup</h1>
+      <form id="reg_form" action="/signup" method="post">
+        <div class="row">
+          <div class="col s10 offset-s1 input-field">
+            <input id="reg_no" name="regno" type="text" class="validate" pattern="[0-9]{12}" title="12 digits required" required>
+            <label for="reg_no" class="noselect">Register Number</label>
+          </div>
+          <div class="col s10 offset-s1 input-field">
+            <input id="name" name="name" type="text" class="validate" required>
+            <label for="name" class="noselect">Name</label>
+          </div>
+          <div class="col s10 offset-s1 input-field">
+            <input id="offset" name="password" type="password" class="validate" required>
+            <label for="offset" class="noselect">Password</label>
+          </div>
+          <div class="col s6 offset-s3 input-field center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+              Signup
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

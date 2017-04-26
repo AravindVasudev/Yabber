@@ -8,6 +8,17 @@
 
   //Design
   background: $highlight;
+
+  // Vertical Centering
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#chat-container-header-content {
+  h3 {
+    margin-left: 50px;
+  }
 }
 
 // Chat Body
@@ -148,42 +159,6 @@
 .image > img:-moz-full-screen { cursor:zoom-out; }
 .image > img:-ms-fullscreen { cursor:zoom-out; }
 .image > img:fullscreen { cursor:zoom-out; }
-
-// Media Queries for small display
-@media only screen and (max-width: 768px) {
-  body {
-    background-color: #f5f1ee;
-  }
-
-  .app-container {
-    //size
-    height: 100vh;
-    width: 100vw;
-  }
-
-  //Send Button
-  .send-button {
-    border-radius: 50%;
-    background-color: $highlightBackground;
-  }
-
-  #messages {
-    padding: 10px !important;
-  }
-
-  #sender, #type-message {
-    padding: .5em !important;
-    height: 2em;
-  }
-
-  #sender {
-    padding-bottom: 5px !important;
-  }
-
-  .message, .message-me {
-    max-width: 90%;
-  }
-}
 
 #emoji-tray {
   position: absolute;

@@ -1,4 +1,13 @@
-<div id="chat-container-header"></div>
+<div id="chat-container-header">
+  <div id="chat-container-header-content">
+    <div class="row">
+      <div class="col-sm-10">
+        <h3>Yabber! - Local IM</h3>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+</div>
 <div id="chat-body" (contextmenu)="contextmenushow($event)" (click)="contextmenuhide($event)">
   <div id="messages" *ngFor="let message of messages">
     <div class="message-me" *ngIf="message.me; else elseBlock">

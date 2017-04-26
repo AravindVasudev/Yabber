@@ -21,7 +21,7 @@ export class ChatContainerComponent implements OnInit {
   emojiSet: Array<any>;
 
   constructor(private pushService: PushNotificationsService) {
-    this.socket = io.connect('http://localhost:3000');
+    this.socket = io();
     this.messages = [];
     this.audio = new Audio('assets/media/chat.mp3');
     this.progressStatus = 'indeterminate';

@@ -1,3 +1,5 @@
+const User = require('../models/user');
+
 // Singleton Routes Controller
 let instance = null;
 module.exports = class Routes {
@@ -19,6 +21,32 @@ module.exports = class Routes {
     };
     res.locals.title = 'Welcome to Yabber!';
     res.render(file);
+  }
+
+  // Signup
+  getSignup(req, res) {
+    let file = 'index';
+    res.locals.meta = {
+      title: 'Local instant messaging system',
+      description: 'Yabber is a simple to use chat app that let&#x27;s you to have fun with your friends',
+      keywords: 'chat, app, babble, instant, messaging',
+      file: file
+    };
+    res.locals.title = 'Welcome to Yabber!';
+    res.render('signup');
+  }
+
+  // Signup User
+  postSignup(req, res) {
+    let newUser = new User({
+      id: req.body.regno,
+      name: req.body.name
+    });
+    newUser.password = newUser.generateHash(req.body.password);
+    newUser.save((err) => {
+      if(err) throw err;
+      res.redirect('/chat');
+    });
   }
 
   // Authenticates user

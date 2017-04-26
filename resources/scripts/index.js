@@ -1,2 +1,3 @@
 import $ from 'jquery';
-import 'bootstrap';
+// import 'bootstrap';
+import 'materialize';
