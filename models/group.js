@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Group Schema
 let GroupSchema = new mongoose.Schema({
-  name: String
+  name: String,
   picture: String,
   members: Array,
   messages: Array,

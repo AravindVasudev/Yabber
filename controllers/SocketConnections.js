@@ -8,6 +8,7 @@ module.exports = (io) => {
   const imagemin         = require('imagemin');
   const imageminJpegtran = require('imagemin-jpegtran');
   const imageminPngquant = require('imagemin-pngquant');
+  const Group            = require('../models/group');
 
   io.on('connection', (socket) => {
     // Chat Message
@@ -16,7 +17,7 @@ module.exports = (io) => {
         let message = {
           id: socket.request.user.id,
           name: socket.request.user.name,
-          msg: escape(msg),
+          msg: escape(msg.trim()),
           time: formatAMPM(new Date()),
           photo: socket.request.user.picture,
         };
@@ -43,6 +44,24 @@ module.exports = (io) => {
             photo: socket.request.user.picture,
           }
           socket.broadcast.emit('message', message);
+        });
+      }
+    });
+  });
+
+  io.of('/rooms').on('connection', (socket) => {
+    socket.on('create room', (groupDetails) => {
+      if(!!groupDetails.name.trim() && !!groupDetails.picture && !!groupDetails.members) {
+        let newGroup = new Group({
+          name: escape(groupDetails.name.trim()),
+          picture: groupDetails.picture,
+          members: groupDetails.members.split(','),
+          messages: []
+        });
+
+        newGroup.save((err, data) => {
+          if(err) throw err;
+          socket.emit('created', data.name);
         });
       }
     });

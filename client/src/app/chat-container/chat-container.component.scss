@@ -53,6 +53,11 @@
     justify-content: center;
     align-items: center;
   }
+
+  md-progress-bar {
+    position: relative;
+    top: -5px;
+  }
 }
 
 #type-message {
@@ -65,7 +70,7 @@
   flex: 8;
 }
 
-#send-button {
+#send-button, #emoji-tray-button {
   border: 0;
   background-color: transparent;
   color: $primaryDark;
@@ -73,7 +78,11 @@
   flex: 1;
 }
 
-#type-message:focus, #send-button:focus {
+#emoji-tray-button {
+  flex: 0.5;
+}
+
+#type-message:focus, #send-button:focus, #emoji-tray-button:focus {
   outline: 0;
 }
 
@@ -173,5 +182,29 @@
 
   .message, .message-me {
     max-width: 90%;
+  }
+}
+
+#emoji-tray {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  top: 50%;
+  display: none;
+  background: #F5F5F5;
+  overflow-y: scroll;
+  padding-top: 10px;
+}
+
+#emoji-tray-content {
+  width: 90%;
+  margin: auto;
+
+  h4 {
+    padding-left: 2.5px;
+  }
+
+  .col-sm-1 {
+    cursor: pointer;
   }
 }

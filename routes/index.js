@@ -7,6 +7,7 @@ const routes           = new RoutesController();
 const auth             = require('../config/passport');
 const User             = require('../models/user.js');
 
+const Group = require('../models/group');
 
 // login page
 router.get('/', auth.AuthenticatedRedirect, routes.getIndex);

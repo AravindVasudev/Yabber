@@ -15,16 +15,22 @@ export class ChatContainerComponent implements OnInit {
   chatmsg: String;
   messages: Array<Message>;
   audio: HTMLAudioElement;
-  contextMenu: HTMLElement;
+  contextMenu: any;
+  progressSize: any;
+  progressStatus: any;
+  emojiSet: Array<any>;
 
   constructor(private pushService: PushNotificationsService) {
     this.socket = io.connect('http://localhost:3000');
     this.messages = [];
     this.audio = new Audio('assets/media/chat.mp3');
+    this.progressStatus = 'indeterminate';
+    this.chatmsg = '';
+    this.emojiSet = ['😀','😃','😄','😁','😆','😅','😂','🤣','☺️','😊','😇','🙂','🙃','😉','😌','😍','😘','😗','😙','😚','😋','😜','😝','😛','🤑','🤗','🤓','😎','🤡','🤠','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','😤','😠','😡','😶','😐','😑','😯','😦','😧','😮','😲','😵','😳','😱','😨','😰','😢','😥','🤤','😭','😓','😪','😴','🙄','🤔','🤥','😬','🤐','🤢','🤧','😷','🤒','🤕','😈','👿','👹','👺','💩','👻','💀','☠️','👽','👾','🤖','🎃','😺','😸','😹','😻','😼','😽','🙀','😿','😾','👐','🙌','👏','🙏','🤝','👍','👎','👊','✊','🤛','🤜','🤞','✌️','🤘','👌','👈','👉','👆','👇','☝️','✋','🤚','🖐','🖖','👋','🤙','💪','🖕','✍️','🤳','💅','🖖','💄','💋','👄','👅','👂','👃','👣','👁','👀','🗣','👤','👥','👶','👦','👧','👨','👩','👱‍♀️','👱','👴','👵','👲','👳‍♀️','👳','👮‍♀️','👮','👷‍♀️','👷','💂‍♀️','💂','🕵️‍♀️','🕵️','👩‍⚕️','👨‍⚕️','👩‍🌾','👨‍🌾','👩‍🍳','👨‍🍳','👩‍🎓','👨‍🎓','👩‍🎤','👨‍🎤','👩‍🏫','👨‍🏫','👩‍🏭','👨‍🏭','👩‍💻','👨‍💻','👩‍💼','👨‍💼','👩‍🔧','👨‍🔧','👩‍🔬','👨‍🔬','👩‍🎨','👨‍🎨','👩‍🚒','👨‍🚒','👩‍✈️','👨‍✈️','👩‍🚀','👨‍🚀','👩‍⚖️','👨‍⚖️','🤶','🎅','👸','🤴','👰','🤵','👼','🤰','🙇‍♀️','🙇','💁','💁‍♂️','🙅','🙅‍♂️','🙆','🙆‍♂️','🙋','🙋‍♂️','🤦‍♀️','🤦‍♂️','🤷‍♀️','🤷‍♂️','🙎','🙎‍♂️','🙍','🙍‍♂️','💇','💇‍♂️','💆','💆‍♂️','🕴','💃','🕺','👯','👯‍♂️','🚶‍♀️','🚶','🏃‍♀️','🏃','👫','👭','👬','💑','👩‍❤️‍👩','👨‍❤️‍👨','💏','👩‍❤️‍💋‍👩','👨‍❤️‍💋‍👨','👪','👨‍👩‍👧','👨‍👩‍👧‍👦','👨‍👩‍👦‍👦','👨‍👩‍👧‍👧','👩‍👩‍👦','👩‍👩‍👧','👩‍👩‍👧‍👦','👩‍👩‍👦‍👦','👩‍👩‍👧‍👧','👨‍👨‍👦','👨‍👨‍👧','👨‍👨‍👧‍👦','👨‍👨‍👦‍👦','👨‍👨‍👧‍👧','👩‍👦','👩‍👧','👩‍👧‍👦','👩‍👦‍👦','👩‍👧‍👧','👨‍👦','👨‍👧','👨‍👧‍👦','👨‍👦‍👦','👨‍👧‍👧','👚','👕','👖','👔','👗','👙','👘','👠','👡','👢','👞','👟','👒','🎩','🎓','👑','⛑','🎒','👝','👛','👜','💼','👓','🕶','🌂','☂️'];
   }
 
   ngOnInit() {
-    this.contextMenu = document.getElementById('context-menu');
+    this.contextMenu = $('#context-menu');
 
     // Chat Messages
     Observable.fromEvent(this.socket, 'message')
@@ -34,13 +40,11 @@ export class ChatContainerComponent implements OnInit {
     if(this.pushService.permission === 'default') {
       this.pushService.requestPermission();
     }
+
+    setTimeout(() => this.progressStatus = 'determinate', 3000);
   }
 
   reply(msg) {
-    msg.msg = twemoji.parse(msg.msg);
-    this.messages.push(msg);
-    this.audio.play();
-    navigator.vibrate(100);
     if(this.pushService.permission === 'granted' && !document.hasFocus()) {
       this.pushService.create(msg.name,{body: msg.msg, icon: msg.picture, tag: msg.id}).subscribe(
         res => {
@@ -52,6 +56,12 @@ export class ChatContainerComponent implements OnInit {
         (err: any) => console.log(err)
       );
     }
+    msg.msg = twemoji.parse(msg.msg, (icon, options, variant) => {
+      return 'assets/emojis/' + icon + '.svg';
+    });
+    this.messages.push(msg);
+    this.audio.play();
+    navigator.vibrate(100);
   }
 
   send(msg) {
@@ -60,9 +70,11 @@ export class ChatContainerComponent implements OnInit {
     this.chatmsg = '';
 
     let escape = document.createElement('textarea');
-    escape.textContent = twemoji.parse(msg.trim());
+    escape.textContent = msg.trim();
     let message: Message = {
-      msg: escape.innerHTML,
+      msg: twemoji.parse(escape.innerHTML, (icon, options, variant) => {
+        return 'assets/emojis/' + icon + '.svg';
+      }),
       time: this.formatAMPM(new Date()),
       me: true
     };
@@ -78,6 +90,17 @@ export class ChatContainerComponent implements OnInit {
       // upload a file to the server.
       ss(this.socket).emit('image', stream, {name: file.name, size: file.size});
       ss.createBlobReadStream(file).pipe(stream);
+
+
+      let blobStream = ss.createBlobReadStream(file);
+      let tot = 0;
+
+      blobStream.on('data', function(chunk) {
+        tot += chunk.length;
+        this.progressSize = Math.floor(tot / file.size * 100);
+      });
+
+      blobStream.pipe(stream);
     }
 
     let reader = new FileReader();
@@ -109,14 +132,31 @@ export class ChatContainerComponent implements OnInit {
   }
 
   contextmenushow(ev) {
-    this.contextMenu.style.display = 'none';
-    this.contextMenu.style.left = `${ev.pageX}px`;
-    this.contextMenu.style.top = `${ev.pageY}px`;
-    this.contextMenu.style.display = 'block';
+    this.contextMenu.css({
+      left: ev.pageX,
+      top: ev.pageY
+    })
+      .hide()
+      .slideDown(300);
     return false;
   }
 
   contextmenuhide(ev) {
-    this.contextMenu.style.display = 'none';
+    this.contextMenu.slideUp(300);
+  }
+
+  toggleEmojiTray() {
+    $('#emoji-tray').toggle('slide', {direction: 'down'});
+  }
+
+  parseEmoji(emoji) {
+    return twemoji.parse(emoji, (icon, options, variant) => {
+      return 'assets/emojis/' + icon + '.svg';
+    });
+  }
+
+  insertEmoji(emoji) {
+    this.chatmsg += emoji;
+    $("#type-message").focus();
   }
 }

@@ -20,9 +20,19 @@
     </ng-template>
   </div>
 </div>
+<div id="emoji-tray">
+  <div id="emoji-tray-content">
+    <h4>Emojis</h4>
+    <div class="row">
+      <div class="col-sm-1" *ngFor="let emoji of emojiSet" [innerHTML]="parseEmoji(emoji)" (click)="insertEmoji(emoji)"></div>
+    </div>
+  </div>
+</div>
 <div id="chat-sender" class="noselect">
   <form>
+    <button type="button" id="emoji-tray-button" (click)="toggleEmojiTray()"><span class="glyphicon glyphicon-sunglasses"></span></button>
     <input type="text" name="msg" autocomplete="off" placeholder="Type a message" id="type-message" [(ngModel)]="chatmsg">
     <button type="submit" id="send-button" (click)="send(chatmsg)"><span class="glyphicon glyphicon-chevron-right"></span></button>
   </form>
+  <md-progress-bar [mode]="progressStatus" [value]="progressSize"></md-progress-bar>
 </div>

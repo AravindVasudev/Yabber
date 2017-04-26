@@ -5,3 +5,4 @@ interface NodeModule {
 }
 declare var twemoji: any;
 declare var ss: any;
+declare var $: any;
