@@ -8,6 +8,7 @@ import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
 import { PushNotificationsModule } from 'angular2-notifications';
+import { SocketService } from './socket.service';
 
 import { AppComponent } from './app.component';
 import { ChatContainerComponent } from './chat-container/chat-container.component';
@@ -27,7 +28,7 @@ import { ChatColumnComponent } from './chat-column/chat-column.component';
     BrowserAnimationsModule,
     PushNotificationsModule
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

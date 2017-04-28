@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as io from 'socket.io-client';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
-
 import { PushNotificationsService } from 'angular2-notifications';
+import { SocketService } from '../socket.service';
 
 import { Message } from '../message';
 import { User } from '../user';
@@ -17,7 +14,6 @@ import { User } from '../user';
 export class ChatContainerComponent implements OnInit {
 
   user: User;
-  socket: any;
   chatmsg: String;
   messages: Array<Message>;
   audio: HTMLAudioElement;
@@ -26,9 +22,8 @@ export class ChatContainerComponent implements OnInit {
   progressStatus: any;
   emojiSet: Array<any>;
 
-  constructor(private pushService: PushNotificationsService) {
+  constructor(private pushService: PushNotificationsService, private socketService: SocketService) {
     // Init variables
-    this.socket = io();
     this.messages = [];
     this.audio = new Audio('assets/media/chat.mp3');
     this.progressStatus = 'indeterminate';
@@ -36,7 +31,7 @@ export class ChatContainerComponent implements OnInit {
     this.emojiSet = ['😀','😃','😄','😁','😆','😅','😂','🤣','☺️','😊','😇','🙂','🙃','😉','😌','😍','😘','😗','😙','😚','😋','😜','😝','😛','🤑','🤗','🤓','😎','🤡','🤠','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','😤','😠','😡','😶','😐','😑','😯','😦','😧','😮','😲','😵','😳','😱','😨','😰','😢','😥','🤤','😭','😓','😪','😴','🙄','🤔','🤥','😬','🤐','🤢','🤧','😷','🤒','🤕','😈','👿','👹','👺','💩','👻','💀','☠️','👽','👾','🤖','🎃','😺','😸','😹','😻','😼','😽','🙀','😿','😾','👐','🙌','👏','🙏','🤝','👍','👎','👊','✊','🤛','🤜','🤞','✌️','🤘','👌','👈','👉','👆','👇','☝️','✋','🤚','🖐','🖖','👋','🤙','💪','🖕','✍️','🤳','💅','🖖','💄','💋','👄','👅','👂','👃','👣','👁','👀','🗣','👤','👥','👶','👦','👧','👨','👩','👱‍♀️','👱','👴','👵','👲','👳‍♀️','👳','👮‍♀️','👮','👷‍♀️','👷','💂‍♀️','💂','🕵️‍♀️','🕵️','👩‍⚕️','👨‍⚕️','👩‍🌾','👨‍🌾','👩‍🍳','👨‍🍳','👩‍🎓','👨‍🎓','👩‍🎤','👨‍🎤','👩‍🏫','👨‍🏫','👩‍🏭','👨‍🏭','👩‍💻','👨‍💻','👩‍💼','👨‍💼','👩‍🔧','👨‍🔧','👩‍🔬','👨‍🔬','👩‍🎨','👨‍🎨','👩‍🚒','👨‍🚒','👩‍✈️','👨‍✈️','👩‍🚀','👨‍🚀','👩‍⚖️','👨‍⚖️','🤶','🎅','👸','🤴','👰','🤵','👼','🤰','🙇‍♀️','🙇','💁','💁‍♂️','🙅','🙅‍♂️','🙆','🙆‍♂️','🙋','🙋‍♂️','🤦‍♀️','🤦‍♂️','🤷‍♀️','🤷‍♂️','🙎','🙎‍♂️','🙍','🙍‍♂️','💇','💇‍♂️','💆','💆‍♂️','🕴','💃','🕺','👯','👯‍♂️','🚶‍♀️','🚶','🏃‍♀️','🏃','👫','👭','👬','💑','👩‍❤️‍👩','👨‍❤️‍👨','💏','👩‍❤️‍💋‍👩','👨‍❤️‍💋‍👨','👪','👨‍👩‍👧','👨‍👩‍👧‍👦','👨‍👩‍👦‍👦','👨‍👩‍👧‍👧','👩‍👩‍👦','👩‍👩‍👧','👩‍👩‍👧‍👦','👩‍👩‍👦‍👦','👩‍👩‍👧‍👧','👨‍👨‍👦','👨‍👨‍👧','👨‍👨‍👧‍👦','👨‍👨‍👦‍👦','👨‍👨‍👧‍👧','👩‍👦','👩‍👧','👩‍👧‍👦','👩‍👦‍👦','👩‍👧‍👧','👨‍👦','👨‍👧','👨‍👧‍👦','👨‍👦‍👦','👨‍👧‍👧','👚','👕','👖','👔','👗','👙','👘','👠','👡','👢','👞','👟','👒','🎩','🎓','👑','⛑','🎒','👝','👛','👜','💼','👓','🕶','🌂','☂️'];
 
     // Init User
-    Observable.fromEvent(this.socket, 'init')
+    this.socketService.getUserDetails()
       .subscribe((user: User) => this.user = user);
   }
 
@@ -45,7 +40,7 @@ export class ChatContainerComponent implements OnInit {
     this.contextMenu = $('#context-menu');
 
     // Chat Messages Observable
-    Observable.fromEvent(this.socket, 'message')
+    this.socketService.getResponse()
       .subscribe(msg => this.response(msg));
 
     // Push Message Request Permission
@@ -63,7 +58,7 @@ export class ChatContainerComponent implements OnInit {
     if(msg.trim() === '') return;
 
     // Send the message and clear the input field
-    this.socket.emit('message', msg);
+    this.socketService.sendTextMessage(msg);
     this.chatmsg = '';
 
     // Sanitize the message, parse emojis unicodes, and push it into messages
@@ -120,18 +115,12 @@ export class ChatContainerComponent implements OnInit {
     let ext = file.name.split('.').pop().toLowerCase();
     if(['jpg', 'jpeg', 'png'].indexOf(ext) > -1) {
       // upload the image to the server and update progressSize
-      let stream = ss.createStream();
-      ss(this.socket).emit('image', stream, {name: file.name, size: file.size});
-
-      let blobStream = ss.createBlobReadStream(file);
       let tot = 0;
-
-      blobStream.on('data', function(chunk) {
+      this.socketService.sendImage(file, (chunk) => {
         tot += chunk.length;
         this.progressSize = Math.floor(tot / file.size * 100);
+        if(file.size === tot) this.progressSize = 0;
       });
-
-      blobStream.pipe(stream);
     }
 
     // create the blobURL for the image, format it and push it to messages
