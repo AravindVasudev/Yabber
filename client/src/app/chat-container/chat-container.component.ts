@@ -137,7 +137,7 @@ export class ChatContainerComponent implements OnInit {
     // create the blobURL for the image, format it and push it to messages
     let reader = new FileReader();
     reader.addEventListener("load", () => {
-      this.messages.push({image: reader.result, time: this.formatAMPM(new Date())});
+      this.messages.push({id: this.user.id, image: reader.result, time: this.formatAMPM(new Date())});
     }, false);
 
     if (file) {

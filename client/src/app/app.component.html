@@ -8,3 +8,13 @@
       </div>
     </div>
 </md-card>
+
+<!-- Context Menu -->
+<md-list id="context-menu">
+  <md-list-item>
+    <input type="file" name="file" id="file" (change)="chatComponent.sendImage($event)" class="visuallyhidden" accept="image/*">
+    <label for="file">UPLOAD PIC</label>
+  </md-list-item>
+  <md-list-item>ITEM</md-list-item>
+  <md-list-item><a href="/logout">LOGOUT</a></md-list-item>
+</md-list>
