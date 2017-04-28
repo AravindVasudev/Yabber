@@ -40,7 +40,13 @@ module.exports = class Routes {
   postSignup(req, res) {
     let newUser = new User({
       id: req.body.regno,
-      name: req.body.name
+      name: req.body.name,
+      picture: req.body.picture,
+      group: [{
+        id: 'default',
+        name: 'Global Group',
+        picture: '/img/default-avatar.jpg'
+      }]
     });
     newUser.password = newUser.generateHash(req.body.password);
     newUser.save((err) => {

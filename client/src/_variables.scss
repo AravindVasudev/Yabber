@@ -18,6 +18,12 @@ $app-height: 90vh;
 $app-width: 80vw;
 $app-background: #FFFFFF;
 
+// Context Menu
+$context-menu-hover-background: #80D8FF;
+$context-menu-hover-color: #FFFFFF;
+$context-menu-width: 200px;
+$context-menu-background: #FFFFFF;
+
 /*
  * Chat Container Component Variables
  */
@@ -46,12 +52,17 @@ $message-sender-padding: 10px;
 $message-sender-color: #454545;
 $message-sender-button-color: #454545;
 
-
 /*
- * Context Menu Component Variables
+ * Chat Column Component Variables
  */
 
-$context-menu-hover-background: #80D8FF;
-$context-menu-hover-color: #FFFFFF;
-$context-menu-width: 200px;
-$context-menu-background: #FFFFFF;
+// Header
+$chat-column-header-height: 9%;
+$chat-column-header-background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+$chat-column-header-border-right: 1px solid #FFFFFF;
+$chat-column-header-dp-margin: 5px 0 0 0;
+$chat-column-header-display-name-font-size: 1.2em;
+
+// Column Body
+$chat-column-body-height: 91%;
+$chat-column-body-background: #FAFAFA;

@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { PushNotificationsModule } from 'angular2-notifications';
 import { SocketService } from './socket.service';
 
@@ -26,7 +28,8 @@ import { ChatColumnComponent } from './chat-column/chat-column.component';
     HttpModule,
     MaterialModule.forRoot(),
     BrowserAnimationsModule,
-    PushNotificationsModule
+    PushNotificationsModule,
+    NgbModule.forRoot()
   ],
   providers: [SocketService],
   bootstrap: [AppComponent]

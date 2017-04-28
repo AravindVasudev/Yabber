@@ -6,4 +6,5 @@ export interface Message {
   photo?: String;
   image?: String;
   document?: String;
+  group?: String;
 }

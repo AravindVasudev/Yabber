@@ -1,3 +1,24 @@
-<p>
-  chat-column works!
-</p>
+<!--Chat Column Header-->
+<div id="chat-column-header">
+  <div class="row">
+    <div class="col-sm-4">
+      <img [src]="user.photo" class="img-circle"  height="90%" alt="display picture" id="dp">
+    </div>
+    <div class="col-sm-6">
+      <div id="display-name">{{user.name}}</div>
+    </div>
+    <div class="col-sm-2">
+      <div id="add-group"><span class="glyphicon glyphicon-plus" (click)="addGroup()"></span></div>
+    </div>
+  </div>
+</div>
+
+<!--Chat Column Body-->
+<div id="chat-column-body">
+  <md-list id="group-list" class="noselect">
+    <md-list-item *ngFor="let g of user.group; let i = index" class="group" (click)="changeGroup.emit(user.group[i])">
+      <img md-list-avatar [src]="g.picture" alt="group dp">
+      <h3 md-line> {{g.name}} </h3>
+    </md-list-item>
+  </md-list>
+</div>

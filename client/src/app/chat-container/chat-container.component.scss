@@ -11,13 +11,34 @@
   //Design
   background: $chat-container-header-background;
 
-  // Vertical Centering
+  .row {
+    height: 100%;
+    width: 100%;
+  }
+
+  //Center
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  .col-sm-1, .col-sm-5, .col-sm-6 {
+    height: 100%;
+  }
 }
 
-#chat-container-header-content {}
+#group-dp {
+  margin: $chat-column-header-dp-margin;
+}
+
+#group-name, #menu {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#group-name {
+  font-size: $chat-column-header-display-name-font-size;
+}
 
 /*
  * Chat Body
@@ -127,7 +148,7 @@
  */
 
  // Messages Container
- #messages {
+ #messages, #checker {
    margin: 0;
    display: flex;
    flex-flow: column nowrap;

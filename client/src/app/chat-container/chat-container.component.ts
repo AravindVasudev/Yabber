@@ -5,6 +5,7 @@ import { SocketService } from '../socket.service';
 
 import { Message } from '../message';
 import { User } from '../user';
+import { Group } from '../group';
 
 @Component({
   selector: 'chat-container',
@@ -21,9 +22,12 @@ export class ChatContainerComponent implements OnInit {
   progressSize: any;
   progressStatus: any;
   emojiSet: Array<any>;
+  group: Group;
+
 
   constructor(private pushService: PushNotificationsService, private socketService: SocketService) {
     // Init variables
+    this.group = [];
     this.messages = [];
     this.audio = new Audio('assets/media/chat.mp3');
     this.progressStatus = 'indeterminate';
@@ -32,7 +36,10 @@ export class ChatContainerComponent implements OnInit {
 
     // Init User
     this.socketService.getUserDetails()
-      .subscribe((user: User) => this.user = user);
+      .subscribe((user: User) => {
+        this.user = user;
+        this.group = user.group[0];
+      });
   }
 
   ngOnInit() {
@@ -52,13 +59,18 @@ export class ChatContainerComponent implements OnInit {
     setTimeout(() => this.progressStatus = 'determinate', 4000);
   }
 
+  // Change Group
+  changeToGroup(group: Group) {
+    this.group = group;
+  }
+
   // Send Text Message
   sendText(msg) {
     // Check if empty
     if(msg.trim() === '') return;
 
     // Send the message and clear the input field
-    this.socketService.sendTextMessage(msg);
+    this.socketService.sendTextMessage({group: this.group.id, msg: msg});
     this.chatmsg = '';
 
     // Sanitize the message, parse emojis unicodes, and push it into messages
@@ -70,7 +82,8 @@ export class ChatContainerComponent implements OnInit {
       msg: twemoji.parse(escape.innerHTML, (icon, options, variant) => {
         return 'assets/emojis/' + icon + '.svg';
       }),
-      time: this.formatAMPM(new Date())
+      time: this.formatAMPM(new Date()),
+      group: this.group.id
     };
     this.messages.push(message);
   }
@@ -116,7 +129,7 @@ export class ChatContainerComponent implements OnInit {
     if(['jpg', 'jpeg', 'png'].indexOf(ext) > -1) {
       // upload the image to the server and update progressSize
       let tot = 0;
-      this.socketService.sendImage(file, (chunk) => {
+      this.socketService.sendImage(file, this.group.id, (chunk) => {
         tot += chunk.length;
         this.progressSize = Math.floor(tot / file.size * 100);
         if(file.size === tot) this.progressSize = 0;
@@ -126,7 +139,7 @@ export class ChatContainerComponent implements OnInit {
     // create the blobURL for the image, format it and push it to messages
     let reader = new FileReader();
     reader.addEventListener("load", () => {
-      this.messages.push({id: this.user.id, image: reader.result, time: this.formatAMPM(new Date())});
+      this.messages.push({id: this.user.id, image: reader.result, time: this.formatAMPM(new Date()), group: this.group.id});
     }, false);
 
     if (file) {

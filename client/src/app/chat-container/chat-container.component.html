@@ -1,28 +1,40 @@
 <!-- Chat Container Header -->
 <div id="chat-container-header">
-  <div id="chat-container-header-content"></div>
+  <div class="row">
+    <div class="col-sm-5">
+      <img [src]="group.picture" class="img-circle"  height="90%" alt="display picture" id="group-dp">
+    </div>
+    <div class="col-sm-6">
+      <div id="group-name">{{group.name}}</div>
+    </div>
+    <div class="col-sm-1">
+      <div id="menu"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+    </div>
+  </div>
 </div>
 
 <!-- Chat Body -->
 <div id="chat-body" (contextmenu)="contextmenushow($event)" (click)="contextmenuhide($event)">
   <div id="messages" *ngFor="let message of messages">
-    <div class="message-me" *ngIf="message.id == user.id; else elseBlock">
-      <span class="image" *ngIf="message.image">
-        <img src="{{message.image}}" class="img-responsive image" (click)="toggleFullscreen($event)">
-      </span>
-      <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
-      <span class="time noselect">{{message.time}}</span>
+    <div *ngIf="group.id == message.group" id="checker">
+      <div class="message-me" *ngIf="message.id == user.id; else elseBlock">
+        <span class="image" *ngIf="message.image">
+          <img src="{{message.image}}" class="img-responsive image" (click)="toggleFullscreen($event)">
+        </span>
+        <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
+        <span class="time noselect">{{message.time}}</span>
+      </div>
+      <ng-template #elseBlock>
+      <div class="message">
+        <span class="username noselect">{{message.name}}</span>
+        <span class="image" *ngIf="message.image">
+          <img src="{{message.image}}" class="img-responsive image" (click)="toggleFullscreen($event)">
+        </span>
+        <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
+        <span class="time noselect">{{message.time}}</span>
+      </div>
+      </ng-template>
     </div>
-    <ng-template #elseBlock>
-    <div class="message">
-      <span class="username noselect">{{message.name}}</span>
-      <span class="image" *ngIf="message.image">
-        <img src="{{message.image}}" class="img-responsive image" (click)="toggleFullscreen($event)">
-      </span>
-      <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
-      <span class="time noselect">{{message.time}}</span>
-    </div>
-    </ng-template>
   </div>
 </div>
 

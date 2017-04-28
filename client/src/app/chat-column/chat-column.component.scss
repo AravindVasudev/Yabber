@@ -1,0 +1,85 @@
+@import '../../variables';
+
+/*
+ * Chat Column Header
+ */
+
+#chat-column-header {
+  //Size
+  height: $chat-column-header-height;
+  width: 100%;
+
+  //Design
+  background: $chat-column-header-background;
+  border-right: $chat-column-header-border-right;
+
+  .row {
+    height: 100%;
+    width: 100%;
+  }
+
+  //Center
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .col-sm-2, .col-sm-4, .col-sm-6 {
+    height: 100%;
+  }
+}
+
+#dp {
+  margin: $chat-column-header-dp-margin;
+}
+
+#display-name, #add-group {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#add-group {
+  cursor: pointer;
+  color: $default-color;
+}
+
+#display-name {
+  font-size: $chat-column-header-display-name-font-size;
+}
+
+/*
+ * Chat Column Body
+ */
+
+#chat-column-body {
+  height: $chat-column-body-height;
+  background: $chat-column-body-background;
+  color: $default-color !important;
+  overflow-y: scroll;
+}
+
+// Groups List
+#group-list {
+  //Size
+  // height: 100%;
+  width: 100%;
+  padding: 0;
+
+  .group {
+    margin-top: 0;
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background: linear-gradient(to right, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 55%, rgba(246,246,246,1) 83%, rgba(255,255,255,1) 100%);
+    border-bottom: 0.5px inset #E0E0E0;
+
+    h3 {
+      color: $default-color;
+    }
+  }
+}
+
+#group-list :hover {
+    background: #F5F5F5;
+    cursor: pointer;
+  }

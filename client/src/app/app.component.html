@@ -1,7 +1,7 @@
 <md-card id="app-container">
     <div class="row no-gutter" id="app-container-content">
       <div class="col-md-3 hidden-xs hidden-sm" id="chat-column">
-        <chat-column></chat-column>
+        <chat-column (changeGroup)="chatComponent.changeToGroup($event)"></chat-column>
       </div>
       <div class="col-md-9" id="chat-container">
         <chat-container></chat-container>

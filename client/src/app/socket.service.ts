@@ -28,16 +28,21 @@ export class SocketService {
   }
 
   // Send Image
-  sendImage(file, callback) {
+  sendImage(file, groupid, callback) {
     // upload the image to the server and execute progress callback
     let stream = ss.createStream();
-    ss(this.socket).emit('image', stream, {name: file.name, size: file.size});
+    ss(this.socket).emit('image', stream, {name: file.name, size: file.size, group: groupid});
 
     let blobStream = ss.createBlobReadStream(file);
 
     blobStream.on('data', callback);
 
     blobStream.pipe(stream);
+  }
+
+  // Create group
+  createGroup(group) {
+    this.socket.emit('create group', group);
   }
 
 }

@@ -9,26 +9,62 @@ module.exports = (io) => {
   const imageminJpegtran = require('imagemin-jpegtran');
   const imageminPngquant = require('imagemin-pngquant');
   const Group            = require('../models/group');
+  const User             = require('../models/user.js');
 
   io.on('connection', (socket) => {
     socket.emit('init', {
       id: socket.request.user.id,
       name: socket.request.user.name,
       photo: socket.request.user.picture,
-      group: []
+      group: socket.request.user.group
+    });
+
+    // Join member groups
+    socket.request.user.group.forEach((group) => {
+      socket.join(group.id);
+    });
+
+    // Create Group
+    socket.on('create group', (group) => {
+      let members = group.members.split(',');
+      members.push(socket.request.user.id);
+      console.log(members);
+      let newGroup = new Group({
+        name: group.title,
+        picture: group.picture,
+        members: members
+      });
+
+      newGroup.save((err, ngroup) => {
+        members.forEach((member) => {
+          User.findOne({id: member}, (err, doc) => {
+            if(err) throw err;
+            doc.group.push({
+              id: ngroup.id,
+              name: ngroup.name,
+              picture: ngroup.picture
+            });
+            doc.save((err, d) => {
+              if(err) throw err;
+              console.log(d);
+            })
+          });
+        });
+      });
     });
 
     // Chat Message
     socket.on('message', msg => {
-      if(!!msg.trim()) {
+      if(!!msg.msg.trim()) {
         let message = {
           id: socket.request.user.id,
           name: socket.request.user.name,
-          msg: escape(msg.trim()),
+          msg: escape(msg.msg.trim()),
           time: formatAMPM(new Date()),
           photo: socket.request.user.picture,
+          group: msg.group
         };
-        socket.broadcast.emit('message', message);
+        socket.broadcast.to(msg.group).emit('message', message);
       }
     });
 
@@ -49,28 +85,11 @@ module.exports = (io) => {
             image: `/uploads/${filename}`,
             time: formatAMPM(new Date()),
             photo: socket.request.user.picture,
+            group: data.group
           }
           socket.broadcast.emit('message', message);
         });
       }
     });
   });
-
-  // io.of('/rooms').on('connection', (socket) => {
-  //   socket.on('create room', (groupDetails) => {
-  //     if(!!groupDetails.name.trim() && !!groupDetails.picture && !!groupDetails.members) {
-  //       let newGroup = new Group({
-  //         name: escape(groupDetails.name.trim()),
-  //         picture: groupDetails.picture,
-  //         members: groupDetails.members.split(','),
-  //         messages: []
-  //       });
-  //
-  //       newGroup.save((err, data) => {
-  //         if(err) throw err;
-  //         socket.emit('created', data.name);
-  //       });
-  //     }
-  //   });
-  // });
 }
