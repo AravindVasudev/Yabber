@@ -11,10 +11,11 @@ module.exports = (io) => {
   const Group            = require('../models/group');
 
   io.on('connection', (socket) => {
-    socket.emit('details', {
+    socket.emit('init', {
       id: socket.request.user.id,
       name: socket.request.user.name,
-      photo: socket.request.user.picture
+      photo: socket.request.user.picture,
+      group: []
     });
 
     // Chat Message

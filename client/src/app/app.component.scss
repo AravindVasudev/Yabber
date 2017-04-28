@@ -1,6 +1,8 @@
 @import '../variables';
 
-// Reset Bootstrap Gutters
+/*
+ * Reset Bootstrap Gutters
+ */
 .row.no-gutter {
   margin-left: 0;
   margin-right: 0;
@@ -19,8 +21,8 @@
   padding: 0;
 
   //Size
-  height: 90vh;
-  width: 80vw;
+  height: $app-height;
+  width: $app-width;
 
   //Alignment
   position: absolute;
@@ -29,7 +31,7 @@
   transform: translate(-50%, -50%);
 
   //Design
-  background: $background;
+  background: $app-background;
 }
 
 // App Container Content
@@ -46,38 +48,4 @@
 // Chat Container
 #chat-container {
   height: 100% !important;
-}
-
-// Context Menu
-#context-menu {
-  border-radius: 0;
-  position: absolute;
-  display:none;
-  border: 0;
-  list-style-type: none;
-  width: 200px;
-  background-color: white;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-  label {
-    display: inline-block;
-    width: 100%;
-    font-weight: normal;
-    cursor: pointer;
-  }
-
-  * {
-    text-decoration: none;
-    color: $primary;
-  }
-
-  *:hover {
-    background-color: $highlight;
-    color: white !important;
-    cursor: pointer;
-
-    a, label {
-      color: white !important;
-    }
-  }
 }

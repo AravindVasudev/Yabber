@@ -1,13 +1,15 @@
 @import '../../variables';
 
-// Chat Container Header
+/*
+ * Chat Container Header
+ */
 #chat-container-header {
   //Size
-  height: 10%;
+  height: $chat-container-header-height;
   width: 100%;
 
   //Design
-  background: $highlight;
+  background: $chat-container-header-background;
 
   // Vertical Centering
   display: flex;
@@ -15,54 +17,75 @@
   justify-content: center;
 }
 
-#chat-container-header-content {
-  h3 {
-    margin-left: 50px;
-  }
-}
+#chat-container-header-content {}
 
-// Chat Body
+/*
+ * Chat Body
+ */
+
 #chat-body {
   //Size
-  height: 80%;
+  height: $chat-body-height;
   width: 100%;
-  padding: 20px 60px;
+  padding: $chat-body-padding;
   overflow-y: scroll;
 
   //Design
-  background: url('../../assets/images/bg.png');
+  background: $chat-body-background;
+  color: $default-color;
 }
 
-// Messages
-#messages {
-  margin: 0;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-end;
-  overflow: none;
+/*
+ * Emoji Tray
+ */
+ #emoji-tray {
+  position: absolute;
+  width: 100%;
+  height: $emoji-tray-height;
+  top: $emoji-tray-top-position;
+  display: none;
+  background: $emoji-tray-background;
+  overflow-y: scroll;
+  padding: $emoji-tray-padding;
 }
 
+#emoji-tray-content {
+  width: $emoji-tray-content-width;
+  margin: auto;
 
-// Chat Sender
+  h4 {
+    padding: $emoji-tray-heading-padding;
+    color: $default-color;
+  }
+
+  .col-sm-1 {
+    cursor: pointer;
+  }
+}
+
+/*
+ * Message Sender
+ */
 #chat-sender {
   //Size
-  height: 10%;
+  height: $message-sender-height;
   width: 100%;
 
   //Design
-  background-color: #f5f1ee;
+  background: $message-sender-background;
 
   form {
     //Size
     height: 100%;
     width: 100%;
-    padding: 10px;
+    padding: $message-sender-padding;
     text-align: center;
 
     // Center
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $message-sender-color;
   }
 
   md-progress-bar {
@@ -71,6 +94,8 @@
   }
 }
 
+
+// Message Input
 #type-message {
   border: 0;
   width: 90%;
@@ -84,7 +109,7 @@
 #send-button, #emoji-tray-button {
   border: 0;
   background-color: transparent;
-  color: $primaryDark;
+  color: $message-sender-button-color;
   font-size: 1.6em;
   flex: 1;
 }
@@ -97,8 +122,21 @@
   outline: 0;
 }
 
-// Message
-.message {
+/*
+ * Messages
+ */
+
+ // Messages Container
+ #messages {
+   margin: 0;
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: flex-end;
+   overflow: none;
+ }
+
+ // Message from others
+ .message {
   display: inline-block;
   padding: 5px 15px;
   background-color: white;
@@ -121,7 +159,7 @@
   }
 }
 
-// Message sent my me
+// Message sent by user
 .message-me {
   display: inline-block;
   padding: 5px 15px;
@@ -142,44 +180,7 @@
   }
 }
 
-.message-bot {
-  display: inline-block;
-  flex: 1;
-  align-self: center;
-}
-
 .time {
   font-size: 0.6em;
   color: #BDBDBD;
-}
-
-// Cursor for image enlargement
-.image > img { cursor:zoom-in; }
-.image > img:-webkit-full-screen { cursor:zoom-out; }
-.image > img:-moz-full-screen { cursor:zoom-out; }
-.image > img:-ms-fullscreen { cursor:zoom-out; }
-.image > img:fullscreen { cursor:zoom-out; }
-
-#emoji-tray {
-  position: absolute;
-  width: 100%;
-  height: 40%;
-  top: 50%;
-  display: none;
-  background: #F5F5F5;
-  overflow-y: scroll;
-  padding-top: 10px;
-}
-
-#emoji-tray-content {
-  width: 90%;
-  margin: auto;
-
-  h4 {
-    padding-left: 2.5px;
-  }
-
-  .col-sm-1 {
-    cursor: pointer;
-  }
 }

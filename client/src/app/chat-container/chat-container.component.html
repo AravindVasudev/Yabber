@@ -1,16 +1,12 @@
+<!-- Chat Container Header -->
 <div id="chat-container-header">
-  <div id="chat-container-header-content">
-    <div class="row">
-      <div class="col-sm-10">
-        <h3>Yabber! - Local IM</h3>
-      </div>
-      <div class="col-sm-2"></div>
-    </div>
-  </div>
+  <div id="chat-container-header-content"></div>
 </div>
+
+<!-- Chat Body -->
 <div id="chat-body" (contextmenu)="contextmenushow($event)" (click)="contextmenuhide($event)">
   <div id="messages" *ngFor="let message of messages">
-    <div class="message-me" *ngIf="message.me; else elseBlock">
+    <div class="message-me" *ngIf="message.id == user.id; else elseBlock">
       <span class="image" *ngIf="message.image">
         <img src="{{message.image}}" class="img-responsive">
       </span>
@@ -29,6 +25,8 @@
     </ng-template>
   </div>
 </div>
+
+<!-- Emoji Tray -->
 <div id="emoji-tray">
   <div id="emoji-tray-content">
     <h4>Emojis</h4>
@@ -37,11 +35,13 @@
     </div>
   </div>
 </div>
+
+<!-- Message Sender -->
 <div id="chat-sender" class="noselect">
   <form>
-    <button type="button" id="emoji-tray-button" (click)="toggleEmojiTray()"><span class="glyphicon glyphicon-sunglasses"></span></button>
+    <button type="button" id="emoji-tray-button" (click)="toggleEmojiTray()"><i class="fa fa-smile-o" aria-hidden="true"></i></button>
     <input type="text" name="msg" autocomplete="off" placeholder="Type a message" id="type-message" [(ngModel)]="chatmsg">
-    <button type="submit" id="send-button" (click)="send(chatmsg)"><span class="glyphicon glyphicon-chevron-right"></span></button>
+    <button type="submit" id="send-button" (click)="sendText(chatmsg)"><span class="glyphicon glyphicon-chevron-right"></span></button>
   </form>
-  <md-progress-bar [mode]="progressStatus" [value]="progressSize"></md-progress-bar>
+  <md-progress-bar [mode]="progressStatus" [value]="progressSize" color="accent"></md-progress-bar>
 </div>

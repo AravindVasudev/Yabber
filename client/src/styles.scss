@@ -1,38 +1,70 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import 'variables';
 
 /*
-* Global Styles
-*/
+ * Loading Screen
+ */
+.loading {
+   opacity: 0;
+   transition: opacity .8s ease-in-out;
+   position: fixed;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   background: #000;
+   z-index: -1;
+}
+
+my-app:empty + .loading {
+   opacity: 1;
+   z-index: 100;
+}
+
+/*
+ * Global Styles
+ */
 
 // Selection
 ::-moz-selection {
-    background: $default-selection-color;
+    background: $selection-bg;
+    color: $selection-color;
     text-shadow: none;
 }
 
 ::selection {
-    background: $default-selection-bg;
-    color: $default-selection-color;
+    background: $selection-bg;
+    color: $selection-color;
     text-shadow: none;
 }
 
 // HTML
 html {
-  color: $default-color;
   font-size: $default-font-size;
   line-height: $default-line-height;
 }
 
 // Body
 body {
-  // Global Resets
-  margin: 0;
-  padding: 0;
-
-  // Design
-  // background-color: red;
-  font-family: $droid-sans;
+  color: $default-color;
+  background: $background-color;
   overflow: hidden;
+}
+
+/*
+ * Helpers
+ */
+
+// Visually Hidden
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 // Disable Selection
@@ -40,19 +72,7 @@ body {
   user-select: none;
 }
 
-// Twemoji height
+// Emoji
 .emoji {
-  height: 30px;
-}
-
-// Visually Hidden
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  height: 2.5em;
 }

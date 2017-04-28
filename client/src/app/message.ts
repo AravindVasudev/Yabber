@@ -1,10 +1,9 @@
 export interface Message {
-  id?: String;
+  id: String;
   name?: String;
   msg?: String;
-  time?: String;
+  time: String;
   photo?: String;
   image?: String;
   document?: String;
-  me?: Boolean;
 }

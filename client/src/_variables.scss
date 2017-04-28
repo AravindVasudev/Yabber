@@ -1,24 +1,47 @@
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans|Oswald|Titillium+Web');
-
 /*
-* Variables
-*/
+ * Defaults
+ */
 
-// defaults
 $default-color: #222;
 $default-font-size: 1em;
 $default-line-height: 1.4;
-$default-selection-bg: #40C4FF;
-$default-selection-color: rgba(255, 255, 255, 1);
 
-// Font Stack
-$droid-sans: 'Droid Sans', sans-serif;
-$oswald: 'Oswald', sans-serif;
-$titillium-web: 'Titillium Web', sans-serif;
+$background-color: #F5F5F5;
+$selection-color: #FFFFFF;
+$selection-bg: #80D8FF;
 
-//Color Palette
-$background: rgba(255, 255, 255, 1);
-$primaryDark: #313638;
-$primary: rgba(69, 69, 69, 1);
-$highlight: #03A9F4;
-$highlightBackground: #EDF0DA;
+/*
+ * App Component Variables
+ */
+
+$app-height: 90vh;
+$app-width: 80vw;
+$app-background: #FFFFFF;
+
+/*
+ * Chat Container Component Variables
+ */
+
+// Header
+$chat-container-header-height: 9%;
+$chat-container-header-background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+
+// Chat Body
+$chat-body-height: 82%;
+$chat-body-padding: 20px 60px;
+$chat-body-background: url('../../assets/images/bg.png');
+
+// Emoji Tray
+$emoji-tray-height: 40%;
+$emoji-tray-top-position: 51%;
+$emoji-tray-background: #F5F5F5;
+$emoji-tray-padding: 10px 0;
+$emoji-tray-content-width: 90%;
+$emoji-tray-heading-padding: 0 0 0 2.5px;
+
+// Message Sender
+$message-sender-height: 9%;
+$message-sender-background: #F5F1EE;
+$message-sender-padding: 10px;
+$message-sender-color: #454545;
+$message-sender-button-color: #454545;
