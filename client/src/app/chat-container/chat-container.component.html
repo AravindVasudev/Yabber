@@ -8,7 +8,7 @@
   <div id="messages" *ngFor="let message of messages">
     <div class="message-me" *ngIf="message.id == user.id; else elseBlock">
       <span class="image" *ngIf="message.image">
-        <img src="{{message.image}}" class="img-responsive">
+        <img src="{{message.image}}" class="img-responsive image" (click)="toggleFullscreen($event)">
       </span>
       <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
       <span class="time noselect">{{message.time}}</span>
@@ -17,7 +17,7 @@
     <div class="message">
       <span class="username noselect">{{message.name}}</span>
       <span class="image" *ngIf="message.image">
-        <img src="{{message.image}}" class="img-responsive">
+        <img src="{{message.image}}" class="img-responsive image" (click)="toggleFullscreen($event)">
       </span>
       <span class="msg" *ngIf="message.msg" [innerHTML]="message.msg"></span>
       <span class="time noselect">{{message.time}}</span>

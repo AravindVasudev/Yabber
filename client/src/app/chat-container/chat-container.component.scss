@@ -184,3 +184,14 @@
   font-size: 0.6em;
   color: #BDBDBD;
 }
+
+/*
+ * Message with Image
+ */
+
+ // Image Enlargement Cursor
+ .image > img { cursor:zoom-in; }
+ .image > img:-webkit-full-screen { cursor:zoom-out; }
+ .image > img:-moz-full-screen { cursor:zoom-out; }
+ .image > img:-ms-fullscreen { cursor:zoom-out; }
+ .image > img:fullscreen { cursor:zoom-out; }

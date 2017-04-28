@@ -190,4 +190,31 @@ export class ChatContainerComponent implements OnInit {
     var strTime = hours + ':' + minutes + ' ' + ampm;
     return strTime;
   }
+
+  // Toggle Image fullscreen
+  toggleFullscreen(event) {
+    let elem = event.currentTarget || document.documentElement;
+    if (!document.fullscreenElement && !(<any>document).mozFullScreenElement &&
+    !document.webkitFullscreenElement && !(<any>document).msFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen((<any>Element).ALLOW_KEYBOARD_INPUT);
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if ((<any>document).msExitFullscreen) {
+        (<any>document).msExitFullscreen();
+      } else if ((<any>document).mozCancelFullScreen) {
+        (<any>document).mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
 }

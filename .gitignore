@@ -33,3 +33,7 @@ npm-debug.log
 #Can be generated again using `	ng build --base-href chat -w	`
 dist/*
 
+# Uploaded Files
+public/uploads/*.jpg
+public/uploads/*.jpeg
+public/uploads/*.png
