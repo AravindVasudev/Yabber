@@ -42,6 +42,7 @@ Project Contest 2017.
 ## Installation <a name="installation"></a>
   1. Install Node.js, MongoDB, and Redis
   2. Install Angular CLI
+  
     ```
       $ sudo npm install -g @angular/cli
     ```
@@ -93,7 +94,7 @@ P.S.: This application is built within a time limit and hence the bugs.
 ## Documents <a name="documents"></a>
 Documents prepared during the event are linked below:
   * [Software Requirements Specification](./documents/srs.pdf)
-  * [Proposed Design & Data Model](./documents/Proposed\ Design\ \&\ Data\ Model.pdf)
+  * [Proposed Design & Data Model](./documents/Proposed%20Design%20%26%20Data%20Model.pdf)
 
 ## Screenshots <a name="screenshots"></a>
 * Login Screen
