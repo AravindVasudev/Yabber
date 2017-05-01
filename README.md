@@ -58,6 +58,7 @@ Project Contest 2017.
   5. Build the angular client-side
   ```
     $ cd client
+    $ npm install
     $ ng build --base-href chat
     $ cd ..
   ```
