@@ -42,10 +42,10 @@ Project Contest 2017.
 ## Installation <a name="installation"></a>
   1. Install Node.js, MongoDB, and Redis
   2. Install Angular CLI
-  
-    ```
-      $ sudo npm install -g @angular/cli
-    ```
+
+  ```
+    $ sudo npm install -g @angular/cli
+  ```
   3. Clone the repository
   ```
     $ git clone https://github.com/AravindVasudev/Yabber.git
